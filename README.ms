@@ -30,3 +30,16 @@
     - [] Os dados da aplicação deve estar pesistido eem um banco PostgresSQL
     - [] Todas listas de dados devem estar paginadas com 20 items por paginadas
     - [] O usuário deve ser indentificado por um JWT (JSON WEB TOKEN)
+
+
+
+# Prisma
+    - instalar o prisma
+        `pnpm i prisma -D `
+        `pnpm i  @prisma/clint `
+        
+    - iniciar o prisma
+        `npx prisma init`
+
+    - Criar tipagem do prisma
+        npx prisma generate 
