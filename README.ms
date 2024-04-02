@@ -40,6 +40,26 @@
         
     - iniciar o prisma
         `npx prisma init`
+    
+    -  Criar migrate
+        `npx prisma migrate dev`
 
     - Criar tipagem do prisma
         npx prisma generate 
+
+# Docker 
+    - Criar containerr
+        `docker run --name api-solid-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest`
+    - listar container 
+        `docker ps`
+    - listar todos os container criardo ate o momento
+        `docker ps -a`
+    - Rodar o docker 
+        `docker start numero-do-container` ou `docker-start nome-do-container`
+    -Deletar a imagem 
+        `docker rm e o nome-do-container`
+    - Mostrar os logs
+        `docker logs nome-do-container`
+
+    - Subir o docker quando estiver o docker compose
+        ` docker compose up -d`
