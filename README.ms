@@ -63,3 +63,7 @@
 
     - Subir o docker quando estiver o docker compose
         ` docker compose up -d`
+
+    # Pattern
+        - Repository Pattern    
+            
