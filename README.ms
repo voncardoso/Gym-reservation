@@ -1,4 +1,4 @@
-# APP
+ stop# APP
     -Name: Gym reservation app
 
 # RFs (Requisitos Funcionais)
@@ -67,3 +67,6 @@
     # Pattern
         - Repository Pattern    
             
+    # SOLID 
+        D - Dependency Inversion Principle (Principio da inversão de dependencia)
+            Ex: Em vez do caso de uso instanciar a dependencia ele vai receber como parametro
