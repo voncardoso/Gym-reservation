@@ -1,15 +1,19 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { RegisterUserCase } from './register'
 import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/reepositories/in-memory/in-memory-users-repository'
 import { UserAlreadyExistsError } from './erros/user-already-exists-error'
 
-describe('Register use case', () => {
-  it('should be able to register', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const resgisterUserCase = new RegisterUserCase(usersRepository)
+let usersRepository: InMemoryUsersRepository
+let sut: RegisterUserCase
 
-    const { user } = await resgisterUserCase.executeRegister({
+describe('Register use case', () => {
+  beforeEach(() => {
+    usersRepository = new InMemoryUsersRepository()
+    sut = new RegisterUserCase(usersRepository)
+  })
+  it('should be able to register', async () => {
+    const { user } = await sut.executeRegister({
       name: 'teste13',
       email: 'teste13@teste6.com',
       password: '123456',
@@ -19,10 +23,7 @@ describe('Register use case', () => {
   })
 
   it('should hash user password upon registration', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const resgisterUserCase = new RegisterUserCase(usersRepository)
-
-    const { user } = await resgisterUserCase.executeRegister({
+    const { user } = await sut.executeRegister({
       name: 'teste13',
       email: 'teste13@teste6.com',
       password: '123456',
@@ -37,19 +38,16 @@ describe('Register use case', () => {
   })
 
   it('should not to be able register with same email twice', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const resgisterUserCase = new RegisterUserCase(usersRepository)
-
     const email = 'teste13@teste6.com'
 
-    await resgisterUserCase.executeRegister({
+    await sut.executeRegister({
       name: 'teste13',
       email,
       password: '123456',
     })
 
     expect(
-      resgisterUserCase.executeRegister({
+      sut.executeRegister({
         name: 'teste13',
         email,
         password: '123456',
